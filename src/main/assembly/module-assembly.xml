@@ -28,7 +28,7 @@
             <directory>${project.basedir}/src/main/resources/scripts</directory>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>uninstall-cassandra.sh</include>
+                <include>uninstall-presto.sh</include>
             </includes>
         </fileSet>
         <fileSet>
@@ -42,37 +42,37 @@
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>standalone/configuration/</outputDirectory>
             <includes>
-                <include>standalone-cassandra.xml</include>
+                <include>standalone-presto.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>domain/configuration/</outputDirectory>
             <includes>
-                <include>cassandra-domain.xml</include>
-                <include>cassandra-host.xml</include>
+                <include>presto-domain.xml</include>
+                <include>presto-host.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
             <includes>
                 <include>module.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main/conf</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main/conf</outputDirectory>
             <includes>
                 <!-- TODO: this should be turned into DMR config as well -->
-                <include>cassandra-rackdc.properties</include>
+                <include>presto-rackdc.properties</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/target</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
             <includes>
-                <include>wildfly-cassandra.jar</include>
+                <include>wildfly-presto.jar</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -80,43 +80,21 @@
         <dependencySet>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/cassandra/main</outputDirectory>
-            <includes>
-                <include>org.apache.cassandra:cassandra-all</include>
-                <include>org.apache.cassandra:cassandra-thrift</include>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
+<!--            <includes>
+                <include>org.apache.presto:presto-all</include>
+                <include>org.apache.presto:presto-thrift</include>
 
-                <include>org.xerial.snappy:snappy-java</include>
-                <include>net.jpountz.lz4:lz4</include>
-                <include>com.ning:compress-lzf</include>
-                <include>com.google.guava:guava</include>
-                <include>commons-codec:commons-codec</include>
-                <include>org.apache.commons:commons-lang3</include>
-                <include>org.antlr:antlr</include>
-                <include>org.antlr:antlr-runtime</include>
-                <include>org.antlr:stringtemplate</include>
-                <include>org.codehaus.jackson:jackson-core-asl</include>
-                <include>org.codehaus.jackson:jackson-mapper-asl</include>
-                <include>com.googlecode.json-simple</include>
-                <include>com.boundary:high-scale-lib</include>
-                <include>org.mindrot:jbcrypt</include>
-                <include>com.yammer.metrics:metrics-core</include>
-                <include>com.addthis.metrics:reporter-config</include>
-                <include>com.thinkaurelius.thrift</include>
-                <include>com.lmax:disruptor</include>
-                <include>net.sf.supercsv</include>
-                <include>org.apache.thrift</include>
-                <include>org.apache.httpcomponents:httpclient</include>
-                <include>org.apache.httpcomponents:httpcore</include>
-
-                <include>com.github.jbellis:jamm</include>
-                <include>net.java.dev.jna:jna</include>
-                <include>org.yaml:snakeyaml</include>
-                <include>com.clearspring.analytics:stream</include>
-                <include>it.unimi.dsi:fastutil</include>
-
-                <include>com.googlecode.concurrentlinkedhashmap:concurrentlinkedhashmap-lru</include>
-                <include>io.netty:netty-all</include>
-            </includes>
+            </includes>-->
+            <excludes>
+                <exclude>org.wildfly:wildfly-controller</exclude>
+                <exclude>org.wildfly:wildfly-server</exclude>
+                <exclude>org.wildfly:wildfly-subsystem-test</exclude>
+                <exclude>org.jboss.logging:jboss-logging-annotations</exclude>
+                <exclude>org.jboss.logging:jboss-logging-processor</exclude>
+                <exclude>junit:junit</exclude>
+                <exclude>io.airlift.resolver:resolver</exclude>
+            </excludes>
         </dependencySet>
 
     </dependencySets>

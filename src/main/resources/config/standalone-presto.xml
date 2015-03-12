@@ -129,14 +129,8 @@
             </formatter>
         </subsystem>
 
-        <subsystem xmlns="urn:wildfly:cassandra:1.0">
-            <cluster name="WildflyCluster"
-                     seed-provider-class-name="org.apache.cassandra.locator.SimpleSeedProvider"
-                     seed-provider-seeds="${jboss.bind.address:127.0.0.1}"
-                     listen-address="${jboss.bind.address:127.0.0.1}"
-                     broadcast-address="${jboss.bind.address:127.0.0.1}"
-                     start-rpc="true"
-                     start-native-transport="true"/>
+        <subsystem xmlns="urn:wildfly:presto:1.0">
+            <node name="WildflyMaster"/>
         </subsystem>
 
         <subsystem xmlns="urn:jboss:domain:jmx:1.3">
