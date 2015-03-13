@@ -61,6 +61,25 @@ public class PrestoService implements Service<PrestoService> {
             String configPath = resolve(pathManager.getValue(), PRESTO_CONFIG_DIR, ServerEnvironment.SERVER_DATA_DIR) + "/" + clusterName;
             PrestoLogger.LOGGER.infof("Configuration path: '%s'", configPath);
 
+
+            /*
+
+
+            these properties need to be written
+
+            coordinator=true
+            node-scheduler.include-coordinator=true
+            http-server.http.port=8180
+            task.max-memory=512MB
+            discovery-server.enabled=true
+            discovery.uri=http://localhost:8180
+
+            node.environment=test
+            node.id=ffffffff-ffff-ffff-ffff-ffffffffffff
+            #node.data-dir=/Users/hbraun/dev/prj/heimdall/presto-server-0.97/data
+
+             */
+
             System.setProperty("config", configPath + "/config.properties");
 
             prestoServer = new PrestoServer();
