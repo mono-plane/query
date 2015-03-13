@@ -80,6 +80,7 @@
         <dependencySet>
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
+            <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
             <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
 <!--            <includes>
                 <include>org.apache.presto:presto-all</include>
@@ -93,7 +94,7 @@
                 <exclude>org.jboss.logging:jboss-logging-annotations</exclude>
                 <exclude>org.jboss.logging:jboss-logging-processor</exclude>
                 <exclude>junit:junit</exclude>
-                <exclude>io.airlift.resolver:resolver</exclude>
+
             </excludes>
         </dependencySet>
 

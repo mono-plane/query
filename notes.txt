@@ -1,0 +1,3 @@
+- Patches to sun.jdk module (on wildfly)
+Had to add sun/management
+

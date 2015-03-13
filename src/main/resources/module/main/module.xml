@@ -25,33 +25,45 @@
 
         <resource-root path="wildfly-presto.jar"/>
 
+        <resource-root path="presto-parser-0.98-SNAPSHOT.jar"/>
+        <resource-root path="presto-main-0.98-SNAPSHOT.jar"/>
+        <resource-root path="presto-spi-0.98-SNAPSHOT.jar"/>
+        <resource-root path="presto-client-0.98-SNAPSHOT.jar"/>
+
+        <resource-root path="maven-aether-provider-3.0.4.jar"/>
+        <resource-root path="maven-model-3.0.4.jar"/>
+        <resource-root path="plexus-utils-2.0.6.jar"/>
+        <resource-root path="maven-model-builder-3.1.1.jar"/>
+        <resource-root path="plexus-interpolation-1.14.jar"/>
+        <resource-root path="plexus-component-annotations-1.5.5.jar"/>
+        <resource-root path="maven-repository-metadata-3.1.1.jar"/>
         <resource-root path="jcl-over-slf4j-1.7.5.jar"/>
         <resource-root path="slf4j-api-1.7.5.jar"/>
-        <resource-root path="presto-main-0.97.jar"/>
+
         <resource-root path="joni-2.0.0.jar"/>
         <resource-root path="jcodings-1.0.8.jar"/>
         <resource-root path="fastutil-6.5.9.jar"/>
         <resource-root path="commons-math3-3.2.jar"/>
-        <resource-root path="presto-spi-0.97.jar"/>
+
         <resource-root path="slice-0.10.jar"/>
         <resource-root path="jackson-annotations-2.4.4.jar"/>
         <resource-root path="jackson-databind-2.4.4.jar"/>
         <resource-root path="jackson-core-2.4.4.jar"/>
-        <resource-root path="presto-client-0.97.jar"/>
+
         <resource-root path="validation-api-1.1.0.Final.jar"/>
         <resource-root path="annotations-2.0.3.jar"/>
-        <resource-root path="http-client-0.104.jar"/>
+        <resource-root path="http-client-0.105-SNAPSHOT.jar"/>
         <resource-root path="jetty-client-9.2.8.v20150217.jar"/>
         <resource-root path="jetty-http-9.2.8.v20150217.jar"/>
         <resource-root path="jetty-util-9.2.8.v20150217.jar"/>
         <resource-root path="jetty-io-9.2.8.v20150217.jar"/>
-        <resource-root path="concurrent-0.104.jar"/>
-        <resource-root path="units-0.104.jar"/>
+        <resource-root path="concurrent-0.105-SNAPSHOT.jar"/>
+        <resource-root path="units-0.105-SNAPSHOT.jar"/>
         <resource-root path="guava-18.0.jar"/>
-        <resource-root path="log-0.104.jar"/>
+        <resource-root path="log-0.105-SNAPSHOT.jar"/>
         <resource-root path="javax.inject-1.jar"/>
         <resource-root path="jmxutils-1.18.jar"/>
-        <resource-root path="json-0.104.jar"/>
+        <resource-root path="json-0.105-SNAPSHOT.jar"/>
         <resource-root path="guice-4.0-beta5.jar"/>
         <resource-root path="aopalliance-1.0.jar"/>
         <resource-root path="guice-multibindings-4.0-beta5.jar"/>
@@ -60,29 +72,29 @@
         <resource-root path="jackson-datatype-guava-2.4.4.jar"/>
         <resource-root path="jackson-datatype-joda-2.4.4.jar"/>
         <resource-root path="joda-time-2.4.jar"/>
-        <resource-root path="stats-0.104.jar"/>
+        <resource-root path="stats-0.105-SNAPSHOT.jar"/>
         <resource-root path="jol-core-0.2.jar"/>
-        <resource-root path="configuration-0.104.jar"/>
+        <resource-root path="configuration-0.105-SNAPSHOT.jar"/>
         <resource-root path="bval-jsr303-0.5.jar"/>
         <resource-root path="bval-core-0.5.jar"/>
         <resource-root path="commons-lang3-3.1.jar"/>
         <resource-root path="commons-beanutils-core-1.8.3.jar"/>
         <resource-root path="cglib-nodep-2.2.2.jar"/>
-        <resource-root path="trace-token-0.104.jar"/>
-        <resource-root path="presto-parser-0.97.jar"/>
+        <resource-root path="trace-token-0.105-SNAPSHOT.jar"/>
+
         <resource-root path="antlr4-runtime-4.3.jar"/>
         <resource-root path="org.abego.treelayout.core-1.0.1.jar"/>
         <resource-root path="antlr4-annotations-4.3.jar"/>
-        <resource-root path="bootstrap-0.104.jar"/>
-        <resource-root path="log-manager-0.104.jar"/>
+        <resource-root path="bootstrap-0.105-SNAPSHOT.jar"/>
+        <resource-root path="log-manager-0.105-SNAPSHOT.jar"/>
         <resource-root path="jul-to-slf4j-1.7.5.jar"/>
         <resource-root path="log4j-over-slf4j-1.7.5.jar"/>
         <resource-root path="logback-classic-1.0.13.jar"/>
         <resource-root path="logback-core-1.0.13.jar"/>
-        <resource-root path="node-0.104.jar"/>
-        <resource-root path="discovery-0.104.jar"/>
-        <resource-root path="event-0.104.jar"/>
-        <resource-root path="http-server-0.104.jar"/>
+        <resource-root path="node-0.105-SNAPSHOT.jar"/>
+        <resource-root path="discovery-0.105-SNAPSHOT.jar"/>
+        <resource-root path="event-0.105-SNAPSHOT.jar"/>
+        <resource-root path="http-server-0.105-SNAPSHOT.jar"/>
         <resource-root path="javax.servlet-api-3.1.0.jar"/>
         <resource-root path="javax.ws.rs-api-2.0.1.jar"/>
         <resource-root path="jetty-server-9.2.8.v20150217.jar"/>
@@ -91,7 +103,7 @@
         <resource-root path="jetty-servlets-9.2.8.v20150217.jar"/>
         <resource-root path="jetty-continuation-9.2.8.v20150217.jar"/>
         <resource-root path="jetty-jmx-9.2.8.v20150217.jar"/>
-        <resource-root path="jaxrs-0.104.jar"/>
+        <resource-root path="jaxrs-0.105-SNAPSHOT.jar"/>
         <resource-root path="jersey-common-2.12.jar"/>
         <resource-root path="javax.annotation-api-1.2.jar"/>
         <resource-root path="jersey-guava-2.12.jar"/>
@@ -104,9 +116,30 @@
         <resource-root path="jersey-client-2.12.jar"/>
         <resource-root path="jersey-container-servlet-core-2.12.jar"/>
         <resource-root path="jackson-dataformat-smile-2.4.4.jar"/>
-        <resource-root path="jmx-0.104.jar"/>
-        <resource-root path="jmx-http-0.104.jar"/>
+        <resource-root path="jmx-0.105-SNAPSHOT.jar"/>
+        <resource-root path="jmx-http-0.105-SNAPSHOT.jar"/>
+        <resource-root path="resolver-1.1.jar"/>
+        <resource-root path="aether-spi-1.13.1.jar"/>
         <resource-root path="aether-api-1.13.1.jar"/>
+        <resource-root path="aether-impl-1.13.1.jar"/>
+        <resource-root path="aether-util-1.13.1.jar"/>
+        <resource-root path="aether-connector-file-1.13.1.jar"/>
+        <resource-root path="aether-connector-asynchttpclient-1.13.1.jar"/>
+        <resource-root path="async-http-client-1.6.5.jar"/>
+        <resource-root path="netty-3.6.2.Final.jar"/>
+        <resource-root path="maven-core-3.0.4.jar"/>
+        <resource-root path="maven-settings-3.0.4.jar"/>
+        <resource-root path="maven-settings-builder-3.0.4.jar"/>
+        <resource-root path="plexus-sec-dispatcher-1.3.jar"/>
+        <resource-root path="plexus-cipher-1.7.jar"/>
+        <resource-root path="maven-artifact-3.0.4.jar"/>
+        <resource-root path="maven-plugin-api-3.0.4.jar"/>
+        <resource-root path="plexus-classworlds-2.4.jar"/>
+        <resource-root path="maven-embedder-3.0.4.jar"/>
+        <resource-root path="maven-compat-3.0.4.jar"/>
+        <resource-root path="wagon-provider-api-2.2.jar"/>
+        <resource-root path="plexus-container-default-1.5.5.jar"/>
+        <resource-root path="xbean-reflect-3.4.jar"/>
         <resource-root path="discovery-server-1.22.jar"/>
         <resource-root path="jmx-http-rpc-0.103.jar"/>
         <resource-root path="leveldb-api-0.7.jar"/>
@@ -115,12 +148,13 @@
         <resource-root path="concurrentlinkedhashmap-lru-1.4.jar"/>
         <resource-root path="snakeyaml-1.13.jar"/>
 
-        
     </resources>
 
     <dependencies>
-        <module name="org.slf4j"/>
+        <!--<module name="org.slf4j"/>-->
         <module name="javax.api"/>
+        <module name="javax.xml.bind.api"/>
+        <module name="javax.servlet.api"/>
         <module name="org.jboss.staxmapper"/>
         <module name="org.jboss.as.controller"/>
         <module name="org.jboss.as.server"/>
@@ -129,5 +163,6 @@
         <module name="org.jboss.logging"/>
         <module name="org.jboss.vfs"/>
         <module name="sun.jdk" /> <!-- access to sun.misc.Unsafe -->
+        <!-- added 'sun/management' to that module ... -->
     </dependencies>
 </module>

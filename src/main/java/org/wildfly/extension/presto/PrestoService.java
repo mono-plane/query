@@ -17,8 +17,10 @@
 
 package org.wildfly.extension.presto;
 
+import com.facebook.presto.server.PrestoServer;
 import org.jboss.as.controller.services.path.AbsolutePathService;
 import org.jboss.as.controller.services.path.PathManager;
+import org.jboss.as.server.ServerEnvironment;
 import org.jboss.msc.inject.Injector;
 import org.jboss.msc.service.Service;
 import org.jboss.msc.service.StartContext;
@@ -35,6 +37,9 @@ public class PrestoService implements Service<PrestoService> {
     private final String clusterName;
 
     private final InjectedValue<PathManager> pathManager = new InjectedValue<PathManager>();
+    private PrestoServer prestoServer;
+
+    private static final String PRESTO_CONFIG_DIR = "presto/config";
 
     public PrestoService(String clusterName) {
         this.clusterName = clusterName;
@@ -51,6 +56,15 @@ public class PrestoService implements Service<PrestoService> {
         try {
             PrestoLogger.LOGGER.infof("Starting embedded presto service '%s'", clusterName);
 
+            // create config files (workaround)
+
+            String configPath = resolve(pathManager.getValue(), PRESTO_CONFIG_DIR, ServerEnvironment.SERVER_DATA_DIR) + "/" + clusterName;
+            PrestoLogger.LOGGER.infof("Configuration path: '%s'", configPath);
+
+            System.setProperty("config", configPath + "/config.properties");
+
+            prestoServer = new PrestoServer();
+            prestoServer.run();
 
         } catch (Throwable e) {
             context.failed(new StartException(e));
@@ -61,6 +75,8 @@ public class PrestoService implements Service<PrestoService> {
     public void stop(StopContext context) {
         PrestoLogger.LOGGER.infof("Stopping presto service '%s'.", clusterName);
 
+        if(prestoServer!=null)
+            prestoServer.shutdown();
     }
 
     public Injector<PathManager> getPathManagerInjector(){
