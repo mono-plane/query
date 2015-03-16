@@ -38,7 +38,7 @@
         <resource-root path="plexus-component-annotations-1.5.5.jar"/>
         <resource-root path="maven-repository-metadata-3.1.1.jar"/>
         <resource-root path="jcl-over-slf4j-1.7.5.jar"/>
-        <resource-root path="slf4j-api-1.7.5.jar"/>
+        <!--<resource-root path="slf4j-api-1.7.5.jar"/>-->
 
         <resource-root path="joni-2.0.0.jar"/>
         <resource-root path="jcodings-1.0.8.jar"/>
@@ -151,7 +151,7 @@
     </resources>
 
     <dependencies>
-        <!--<module name="org.slf4j"/>-->
+        <module name="org.slf4j"/>
         <module name="javax.api"/>
         <module name="javax.xml.bind.api"/>
         <module name="javax.servlet.api"/>
