@@ -28,6 +28,11 @@ import org.jboss.msc.service.StartException;
 import org.jboss.msc.service.StopContext;
 import org.jboss.msc.value.InjectedValue;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Properties;
+import java.util.UUID;
+
 /**
  * @author Heiko Braun
  */
@@ -80,6 +85,26 @@ public class QueryService implements Service<QueryService> {
 
              */
 
+            // create airlift configuration file
+            Properties properties = new Properties();
+            properties.setProperty("coordinator", "true");
+            properties.setProperty("node-scheduler.include-coordinator", "true");
+            properties.setProperty("http-server.http.port", "8180");
+            properties.setProperty("discovery-server.enabled", "true");
+            properties.setProperty("discovery.uri","http://localhost:8180");
+            properties.setProperty("node.environment","test");
+            properties.setProperty("node.id", UUID.randomUUID().toString());
+
+            File configDirectory = new File(configPath);
+            boolean directoriesCreated = configDirectory.mkdirs();
+            if(!directoriesCreated)
+                throw new RuntimeException("Failed to create config directory: "+configPath);
+
+            File file = new File(configDirectory, "config.properties");
+            FileOutputStream fileOut = new FileOutputStream(file);
+            properties.store(fileOut, "Generated file, don't touch");
+            fileOut.close();
+
             System.setProperty("config", configPath + "/config.properties");
 
             prestoServer = new PrestoServer();
@@ -94,8 +119,11 @@ public class QueryService implements Service<QueryService> {
     public void stop(StopContext context) {
         QueryLogger.LOGGER.infof("Stopping query service '%s'.", clusterName);
 
-        if(prestoServer!=null)
+        if(prestoServer!=null) {
             prestoServer.shutdown();
+
+            // delete airlift configuration file
+        }
     }
 
     public Injector<PathManager> getPathManagerInjector(){
