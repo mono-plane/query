@@ -25,10 +25,10 @@
 
         <resource-root path="query.jar"/>
 
-        <resource-root path="presto-parser-0.98-SNAPSHOT.jar"/>
-        <resource-root path="presto-main-0.98-SNAPSHOT.jar"/>
-        <resource-root path="presto-spi-0.98-SNAPSHOT.jar"/>
-        <resource-root path="presto-client-0.98-SNAPSHOT.jar"/>
+        <resource-root path="presto-parser-0.98-jboss1.jar"/>
+        <resource-root path="presto-main-0.98-jboss1.jar"/>
+        <resource-root path="presto-spi-0.98-jboss1.jar"/>
+        <resource-root path="presto-client-0.98-jboss1.jar"/>
 
         <resource-root path="maven-aether-provider-3.0.4.jar"/>
         <resource-root path="maven-model-3.0.4.jar"/>
