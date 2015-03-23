@@ -28,7 +28,7 @@
             <directory>${project.basedir}/src/main/resources/scripts</directory>
             <outputDirectory>./</outputDirectory>
             <includes>
-                <include>uninstall-presto.sh</include>
+                <include>uninstall-query.sh</include>
             </includes>
         </fileSet>
         <fileSet>
@@ -42,37 +42,29 @@
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>standalone/configuration/</outputDirectory>
             <includes>
-                <include>standalone-presto.xml</include>
+                <include>standalone-query.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/config</directory>
             <outputDirectory>domain/configuration/</outputDirectory>
             <includes>
-                <include>presto-domain.xml</include>
-                <include>presto-host.xml</include>
+                <include>query-domain.xml</include>
+                <include>query-host.xml</include>
             </includes>
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/query/main</outputDirectory>
             <includes>
                 <include>module.xml</include>
             </includes>
         </fileSet>
         <fileSet>
-            <directory>${project.basedir}/src/main/resources/module/main</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main/conf</outputDirectory>
-            <includes>
-                <!-- TODO: this should be turned into DMR config as well -->
-                <include>presto-rackdc.properties</include>
-            </includes>
-        </fileSet>
-        <fileSet>
             <directory>${project.basedir}/target</directory>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/query/main</outputDirectory>
             <includes>
-                <include>wildfly-presto.jar</include>
+                <include>query.jar</include>
             </includes>
         </fileSet>
     </fileSets>
@@ -81,12 +73,7 @@
             <useTransitiveDependencies>true</useTransitiveDependencies>
             <useTransitiveFiltering>true</useTransitiveFiltering>
             <outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>
-            <outputDirectory>modules/system/layers/base/org/wildfly/extension/presto/main</outputDirectory>
-<!--            <includes>
-                <include>org.apache.presto:presto-all</include>
-                <include>org.apache.presto:presto-thrift</include>
-
-            </includes>-->
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/query/main</outputDirectory>
             <excludes>
                 <exclude>org.wildfly:wildfly-controller</exclude>
                 <exclude>org.wildfly:wildfly-server</exclude>

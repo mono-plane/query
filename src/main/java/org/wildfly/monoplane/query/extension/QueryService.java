@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import com.facebook.presto.server.PrestoServer;
 import org.jboss.as.controller.services.path.AbsolutePathService;
@@ -31,7 +31,7 @@ import org.jboss.msc.value.InjectedValue;
 /**
  * @author Heiko Braun
  */
-public class PrestoService implements Service<PrestoService> {
+public class QueryService implements Service<QueryService> {
 
 
     private final String clusterName;
@@ -41,12 +41,12 @@ public class PrestoService implements Service<PrestoService> {
 
     private static final String PRESTO_CONFIG_DIR = "presto/config";
 
-    public PrestoService(String clusterName) {
+    public QueryService(String clusterName) {
         this.clusterName = clusterName;
     }
 
     @Override
-    public PrestoService getValue() throws IllegalStateException, IllegalArgumentException {
+    public QueryService getValue() throws IllegalStateException, IllegalArgumentException {
         return this;
     }
 
@@ -54,12 +54,12 @@ public class PrestoService implements Service<PrestoService> {
     public void start(StartContext context) throws StartException {
 
         try {
-            PrestoLogger.LOGGER.infof("Starting embedded presto service '%s'", clusterName);
+            QueryLogger.LOGGER.infof("Starting embedded query service '%s'", clusterName);
 
             // create config files (workaround)
 
             String configPath = resolve(pathManager.getValue(), PRESTO_CONFIG_DIR, ServerEnvironment.SERVER_DATA_DIR) + "/" + clusterName;
-            PrestoLogger.LOGGER.infof("Configuration path: '%s'", configPath);
+            QueryLogger.LOGGER.infof("Configuration path: '%s'", configPath);
 
 
             /*
@@ -92,7 +92,7 @@ public class PrestoService implements Service<PrestoService> {
 
     @Override
     public void stop(StopContext context) {
-        PrestoLogger.LOGGER.infof("Stopping presto service '%s'.", clusterName);
+        QueryLogger.LOGGER.infof("Stopping query service '%s'.", clusterName);
 
         if(prestoServer!=null)
             prestoServer.shutdown();

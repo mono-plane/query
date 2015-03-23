@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.OperationContext;
@@ -36,7 +36,7 @@ import java.util.ArrayList;
 public class NodeWriteAttributeHandler extends RestartParentWriteAttributeHandler {
 
     NodeWriteAttributeHandler(AttributeDefinition... attributeDefinitions) {
-        super(PrestoModel.NODE, attributeDefinitions);
+        super(QueryModel.NODE, attributeDefinitions);
     }
 
     @Override

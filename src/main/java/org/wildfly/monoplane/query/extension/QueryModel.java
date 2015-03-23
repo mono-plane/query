@@ -15,21 +15,14 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
-
-import org.jboss.logging.BasicLogger;
-import org.jboss.logging.Logger;
-import org.jboss.logging.MessageLogger;
+package org.wildfly.monoplane.query.extension;
 
 /**
- * Log messages for WildFly cassandra module
  * @author Heiko Braun
+ * @since 20/08/14
  */
-@MessageLogger(projectCode = "<<none>>")
-public interface PrestoLogger extends BasicLogger {
-    /**
-     * A logger with the category {@code org.wildfly.presto}.
-     */
-    PrestoLogger LOGGER = Logger.getMessageLogger(PrestoLogger.class, "org.wildfly.presto");
-
+public class QueryModel {
+    public static final String NODE = "node";
+    public static final String NAME = "name";
+    public static final String DEBUG = "debug";
 }

@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;

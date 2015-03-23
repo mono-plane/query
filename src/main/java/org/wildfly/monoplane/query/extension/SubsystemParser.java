@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.PersistentResourceXMLDescription;
@@ -48,7 +48,7 @@ public class SubsystemParser implements XMLStreamConstants, XMLElementReader<Lis
                 .addChild(
                         builder(NodeDefinition.INSTANCE)
                                 .addAttributes(NodeDefinition.INSTANCE.getAttributes())
-                )               .setXmlElementName(PrestoModel.NODE)
+                )               .setXmlElementName(QueryModel.NODE)
                 .build();
     }
 

@@ -15,4 +15,4 @@
 #  limitations under the License.
 #
 
-org.wildfly.extension.presto.PrestoExtension
+org.wildfly.monoplane.query.extension.QueryExtension

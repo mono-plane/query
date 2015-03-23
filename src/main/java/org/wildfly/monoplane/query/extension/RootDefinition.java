@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.PersistentResourceDefinition;
@@ -34,8 +34,8 @@ public class RootDefinition extends PersistentResourceDefinition {
     public static final RootDefinition INSTANCE = new RootDefinition();
 
        private RootDefinition() {
-           super(PrestoExtension.SUBSYSTEM_PATH,
-                   PrestoExtension.getResourceDescriptionResolver(),
+           super(QueryExtension.SUBSYSTEM_PATH,
+                   QueryExtension.getResourceDescriptionResolver(),
                    RootAdd.INSTANCE,
                    ReloadRequiredRemoveStepHandler.INSTANCE);
        }

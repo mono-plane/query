@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 
 import org.jboss.as.controller.PathAddress;
@@ -43,7 +43,7 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.*;
 public class SubsystemParsingTestCase extends AbstractSubsystemTest {
 
     public SubsystemParsingTestCase() {
-        super(PrestoExtension.SUBSYSTEM_NAME, new PrestoExtension());
+        super(QueryExtension.SUBSYSTEM_NAME, new QueryExtension());
     }
 
     protected String getSubsystemXml() throws IOException {
@@ -69,7 +69,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
         Assert.assertEquals(1, addr.size());
         PathElement element = addr.getElement(0);
         Assert.assertEquals(SUBSYSTEM, element.getKey());
-        Assert.assertEquals(PrestoExtension.SUBSYSTEM_NAME, element.getValue());
+        Assert.assertEquals(QueryExtension.SUBSYSTEM_NAME, element.getValue());
     }
 
     /**
@@ -83,7 +83,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
 
         //Read the whole model and make sure it looks as expected
         ModelNode model = services.readWholeModel();
-        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(PrestoExtension.SUBSYSTEM_NAME));
+        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(QueryExtension.SUBSYSTEM_NAME));
     }
 
     /**

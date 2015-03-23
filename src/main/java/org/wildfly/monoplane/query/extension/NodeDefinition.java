@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.AttributeDefinition;
 import org.jboss.as.controller.PersistentResourceDefinition;
@@ -45,18 +45,18 @@ public class NodeDefinition extends PersistentResourceDefinition {
     private final List<AccessConstraintDefinition> accessConstraints;
 
     private NodeDefinition() {
-        super(PrestoExtension.CLUSTER_PATH,
-                PrestoExtension.getResourceDescriptionResolver(PrestoModel.NODE),
+        super(QueryExtension.CLUSTER_PATH,
+                QueryExtension.getResourceDescriptionResolver(QueryModel.NODE),
                 NodeAdd.INSTANCE,
                 new ServiceRemoveStepHandler(NodeAdd.SERVICE_NAME, NodeAdd.INSTANCE));
 
-        ApplicationTypeConfig atc = new ApplicationTypeConfig(PrestoExtension.SUBSYSTEM_NAME, PrestoModel.NODE);
+        ApplicationTypeConfig atc = new ApplicationTypeConfig(QueryExtension.SUBSYSTEM_NAME, QueryModel.NODE);
         accessConstraints = new ApplicationTypeAccessConstraintDefinition(atc).wrapAsList();
     }
 
     // -----------
     static final SimpleAttributeDefinition DEBUG =
-            new SimpleAttributeDefinitionBuilder(PrestoModel.DEBUG, ModelType.BOOLEAN, true)
+            new SimpleAttributeDefinitionBuilder(QueryModel.DEBUG, ModelType.BOOLEAN, true)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(false))
                     .setRestartAllServices()

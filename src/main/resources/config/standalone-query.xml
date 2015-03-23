@@ -27,7 +27,7 @@
         <extension module="org.jboss.as.remoting"/>
         <extension module="org.jboss.as.security"/>
         <extension module="org.wildfly.extension.io"/>
-        <extension module="org.wildfly.extension.presto"/>
+        <extension module="org.wildfly.extension.monoplane.query"/>
     </extensions>
 
     <management>
@@ -129,7 +129,7 @@
             </formatter>
         </subsystem>
 
-        <subsystem xmlns="urn:wildfly:presto:1.0">
+        <subsystem xmlns="urn:org.wildfly.monoplane:query:1.0">
             <node name="WildflyMaster"/>
         </subsystem>
 

@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.Extension;
 import org.jboss.as.controller.ExtensionContext;
@@ -32,30 +32,30 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUB
 /**
  * @author Heiko Braun
  */
-public class PrestoExtension implements Extension {
+public class QueryExtension implements Extension {
 
     /**
-     * The name space used for the {@code substystem} element
+     * The name space used for the {@code subsystem} element
      */
-    public static final String NAMESPACE = "urn:wildfly:presto:1.0";
+    public static final String NAMESPACE = "urn:org.wildfly.monoplane:query:1.0";
 
     /**
      * The name of our subsystem within the model.
      */
-    public static final String SUBSYSTEM_NAME = "presto";
+    public static final String SUBSYSTEM_NAME = "query";
 
 
     protected static final PathElement SUBSYSTEM_PATH = PathElement.pathElement(SUBSYSTEM, SUBSYSTEM_NAME);
-    protected static PathElement CLUSTER_PATH = PathElement.pathElement(PrestoModel.NODE);
+    protected static PathElement CLUSTER_PATH = PathElement.pathElement(QueryModel.NODE);
 
-    private static final String RESOURCE_NAME = PrestoExtension.class.getPackage().getName() + ".LocalDescriptions";
+    private static final String RESOURCE_NAME = QueryExtension.class.getPackage().getName() + ".LocalDescriptions";
 
     static StandardResourceDescriptionResolver getResourceDescriptionResolver(final String... keyPrefix) {
         StringBuilder prefix = new StringBuilder(SUBSYSTEM_NAME);
         for (String kp : keyPrefix) {
             prefix.append('.').append(kp);
         }
-        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, PrestoExtension.class.getClassLoader(), true, false);
+        return new StandardResourceDescriptionResolver(prefix.toString(), RESOURCE_NAME, QueryExtension.class.getClassLoader(), true, false);
     }
 
     @Override

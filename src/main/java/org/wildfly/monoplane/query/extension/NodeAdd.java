@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.controller.AbstractAddStepHandler;
 import org.jboss.as.controller.AttributeDefinition;
@@ -68,9 +68,9 @@ class NodeAdd extends AbstractAddStepHandler {
     static void installRuntimeServices(OperationContext context, PathAddress address, ModelNode fullModel, ServiceVerificationHandler verificationHandler, List<ServiceController<?>> controllers) throws OperationFailedException {
         String clusterName = address.getLastElement().getValue();
 
-        PrestoService service = new PrestoService(clusterName);
+        QueryService service = new QueryService(clusterName);
 
-        ServiceController<PrestoService> controller = context.getServiceTarget()
+        ServiceController<QueryService> controller = context.getServiceTarget()
                 .addService(SERVICE_NAME, service)
                 .addListener(verificationHandler)
                 .setInitialMode(ServiceController.Mode.ACTIVE)

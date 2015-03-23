@@ -15,7 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
+package org.wildfly.monoplane.query.extension;
 
 import org.jboss.as.subsystem.test.AbstractSubsystemBaseTest;
 
@@ -30,7 +30,7 @@ import java.io.IOException;
 public class SubsystemBaseParsingTestCase extends AbstractSubsystemBaseTest {
 
     public SubsystemBaseParsingTestCase() {
-        super(PrestoExtension.SUBSYSTEM_NAME, new PrestoExtension());
+        super(QueryExtension.SUBSYSTEM_NAME, new QueryExtension());
     }
 
     @Override

@@ -15,7 +15,7 @@
   ~  limitations under the License.
   -->
 
-<subsystem xmlns="urn:wildfly:cassandra:1.0">
+<subsystem xmlns="urn:org.wildfly.monoplane:query:1.0">
     <cluster name="My Cluster"
              seed-provider-class-name="org.apache.cassandra.locator.SimpleSeedProvider"
              seed-provider-seeds="127.0.0.1"

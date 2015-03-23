@@ -15,13 +15,7 @@
  *  limitations under the License.
  */
 
-package org.wildfly.extension.presto;
-
-/**
- * @author Heiko Braun
- * @since 20/08/14
- */
-
+package org.wildfly.monoplane.query.extension;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,45 +24,39 @@ import java.util.Map;
  * @author Heiko Braun
  * @since 20/08/14
  */
-enum Namespace {
-    // must be first
+enum Element {
     UNKNOWN(null),
 
-    PRESTO_1_0(PrestoExtension.NAMESPACE);
-    /**
-     * The current namespace version.
-     */
-    public static final Namespace CURRENT = PRESTO_1_0;
+    NAME(QueryModel.NAME);
 
     private final String name;
 
-    Namespace(final String name) {
+    Element(final String name) {
         this.name = name;
     }
 
     /**
-     * Get the URI of this namespace.
+     * Get the local name of this element.
      *
-     * @return the URI
+     * @return the local name
      */
-    public String getUriString() {
+    public String getLocalName() {
         return name;
     }
 
-    private static final Map<String, Namespace> MAP;
+    private static final Map<String, Element> elements;
 
     static {
-        final Map<String, Namespace> map = new HashMap<String, Namespace>();
-        for (Namespace namespace : values()) {
-            final String name = namespace.getUriString();
-            if (name != null) { map.put(name, namespace); }
+        final Map<String, Element> map = new HashMap<String, Element>();
+        for (Element element : values()) {
+            final String name = element.getLocalName();
+            if (name != null) { map.put(name, element); }
         }
-        MAP = map;
+        elements = map;
     }
 
-    public static Namespace forUri(String uri) {
-        final Namespace element = MAP.get(uri);
+    public static Element forName(String localName) {
+        final Element element = elements.get(localName);
         return element == null ? UNKNOWN : element;
     }
 }
-
