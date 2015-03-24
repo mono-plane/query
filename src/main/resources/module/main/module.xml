@@ -162,7 +162,7 @@
         <module name="org.jboss.msc"/>
         <module name="org.jboss.logging"/>
         <module name="org.jboss.vfs"/>
-        <module name="sun.jdk" /> <!-- access to sun.misc.Unsafe -->
+        <module name="sun.jdk" slot="extended"/> <!-- access to sun.misc.Unsafe -->
         <!-- added 'sun/management' to that module ... -->
     </dependencies>
 </module>
