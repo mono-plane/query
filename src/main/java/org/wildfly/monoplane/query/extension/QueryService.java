@@ -93,7 +93,7 @@ public class QueryService implements Service<QueryService> {
             connectorProps.setProperty("connector.name","cassandra");
             connectorProps.setProperty("cassandra.contact-points","localhost");
 
-            createConfigurationFile(catalogPath, connectorProps, "wildfly.properties");
+            createConfigurationFile(catalogPath, connectorProps, "monoplane.properties");
 
 
             // ---
