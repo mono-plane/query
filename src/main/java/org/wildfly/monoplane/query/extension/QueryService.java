@@ -59,31 +59,20 @@ public class QueryService implements Service<QueryService> {
     public void start(StartContext context) throws StartException {
 
         try {
-            QueryLogger.LOGGER.infof("Starting embedded query service '%s'", clusterName);
+            QueryLogger.LOGGER.infof("Starting query service '%s'", clusterName);
 
             // create config files (workaround)
 
+            String moduleDir = resolve(
+                    pathManager.getValue(),
+                    "modules/system/layers/base/org/wildfly/extension/monoplane/query", // plugin manager scans directories
+                    ServerEnvironment.HOME_DIR);
+
             String configPath = resolve(pathManager.getValue(), PRESTO_CONFIG_DIR, ServerEnvironment.SERVER_DATA_DIR) + "/" + clusterName;
+            String catalogPath = configPath + "/catalog";
             QueryLogger.LOGGER.infof("Configuration path: '%s'", configPath);
 
-
-            /*
-
-
-            these properties need to be written
-
-            coordinator=true
-            node-scheduler.include-coordinator=true
-            http-server.http.port=8180
-            task.max-memory=512MB
-            discovery-server.enabled=true
-            discovery.uri=http://localhost:8180
-
-            node.environment=test
-            node.id=ffffffff-ffff-ffff-ffff-ffffffffffff
-            #node.data-dir=/Users/hbraun/dev/prj/heimdall/presto-server-0.97/data
-
-             */
+            // ---
 
             // create airlift configuration file
             Properties properties = new Properties();
@@ -94,16 +83,20 @@ public class QueryService implements Service<QueryService> {
             properties.setProperty("discovery.uri","http://localhost:8180");
             properties.setProperty("node.environment","test");
             properties.setProperty("node.id", UUID.randomUUID().toString());
+            properties.setProperty("plugin.config-dir", catalogPath);
+            properties.setProperty("plugin.dir", moduleDir);
 
-            File configDirectory = new File(configPath);
-            boolean directoriesCreated = configDirectory.mkdirs();
-            if(!directoriesCreated)
-                throw new RuntimeException("Failed to create config directory: "+configPath);
+            createConfigurationFile(configPath, properties, "config.properties");
 
-            File file = new File(configDirectory, "config.properties");
-            FileOutputStream fileOut = new FileOutputStream(file);
-            properties.store(fileOut, "Generated file, don't touch");
-            fileOut.close();
+            // create default cassandra catalog
+            Properties connectorProps = new Properties();
+            connectorProps.setProperty("connector.name","cassandra");
+            connectorProps.setProperty("cassandra.contact-points","localhost");
+
+            createConfigurationFile(catalogPath, connectorProps, "wildfly.properties");
+
+
+            // ---
 
             System.setProperty("config", configPath + "/config.properties");
 
@@ -113,6 +106,21 @@ public class QueryService implements Service<QueryService> {
         } catch (Throwable e) {
             context.failed(new StartException(e));
         }
+    }
+
+    private void createConfigurationFile(String configPath, Properties properties, String fileName) throws Exception {
+        // create config dir
+        File configDirectory = new File(configPath);
+        configDirectory.mkdirs();
+
+        // create dir
+        File dir = new File(configPath);
+        dir.mkdirs();
+
+        File file = new File(configDirectory, fileName);
+        FileOutputStream fileOut = new FileOutputStream(file);
+        properties.store(fileOut, "Generated file, don't touch");
+        fileOut.close();
     }
 
     @Override
