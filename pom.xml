@@ -187,6 +187,13 @@
             </dependency>
 
             <dependency>
+                <groupId>com.facebook.presto</groupId>
+                <artifactId>presto-cli</artifactId>
+                <version>${version.presto}</version>
+                <classifier>executable</classifier>
+            </dependency>
+
+            <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <scope>test</scope>
@@ -242,6 +249,12 @@
                     <artifactId>cassandra-driver-core</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.facebook.presto</groupId>
+            <artifactId>presto-cli</artifactId>
+            <classifier>executable</classifier>
         </dependency>
 
         <dependency>

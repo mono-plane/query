@@ -33,6 +33,13 @@
         </fileSet>
         <fileSet>
             <directory>${project.basedir}/src/main/resources/scripts</directory>
+            <outputDirectory>./bin/</outputDirectory>
+            <includes>
+                <include>mono-cli.sh</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.basedir}/src/main/resources/scripts</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>
                 <include>nodetool</include>
@@ -61,6 +68,13 @@
             </includes>
         </fileSet>
         <fileSet>
+            <directory>${project.basedir}/src/main/resources/cli-module/main</directory>
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/cli/main</outputDirectory>
+            <includes>
+                <include>module.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>${project.basedir}/target</directory>
             <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/query/main</outputDirectory>
             <includes>
@@ -81,8 +95,19 @@
                 <exclude>org.jboss.logging:jboss-logging-annotations</exclude>
                 <exclude>org.jboss.logging:jboss-logging-processor</exclude>
                 <exclude>junit:junit</exclude>
+                <exclude>com.facebook.presto:presto-cli:jar:executable</exclude>
             </excludes>
         </dependencySet>
 
+        <dependencySet>
+            <useTransitiveDependencies>false</useTransitiveDependencies>
+            <!--<outputFileNameMapping>${artifact.artifactId}-${artifact.baseVersion}.${artifact.extension}</outputFileNameMapping>-->
+            <outputDirectory>modules/system/layers/base/org/wildfly/extension/monoplane/cli/main</outputDirectory>
+            <includes>
+                <include>com.facebook.presto:presto-cli:jar:executable</include>
+            </includes>
+        </dependencySet>
+
     </dependencySets>
+
 </assembly>
